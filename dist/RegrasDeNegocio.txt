@@ -1,0 +1,5 @@
+Aplicação que simula negociações de bolsa de valores:
+
+* Não pode ser modificada depois de criada 
+*Obrigatoriamente tem uma data, quantidade e valores
+*Seu volume é calculado multiplicando-se a quantidade negociada no dia pelo valor negociado. 
