@@ -8,6 +8,7 @@ export class NegociacaoController {
     adicionar() {
         const negociacao = this.convertsorTiposNegociacao;
         console.log(negociacao);
+        this.limparformulario();
     }
     convertsorTiposNegociacao() {
         const exp = /-/g;
@@ -17,5 +18,12 @@ export class NegociacaoController {
         const quantidade = parseInt(this.inputQuantidade.value);
         const valor = parseFloat(this.inputValor.value);
         return new Negociacao(date, quantidade, valor);
+    }
+    limparformulario() {
+        this.inputData.value = '';
+        this.inputQuantidade.value = '';
+        this.inputValor.value = '';
+        //como o ts já sabe que inputData é um elementoHTML, assim, já podemos chamar diretamente um método nele 
+        this.inputData.focus();
     }
 }
