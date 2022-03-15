@@ -1,27 +1,30 @@
 import { Negociacao } from "../models/Negociacao.js";
+import { Negociacoes } from "../models/Negociacoes.js";
 
 export class NegociacaoController {
 
     private inputData: HTMLInputElement;
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
+    private negociacoes = new Negociacoes(); 
 
     constructor() {
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
     }
-
+ 
     adicionar(): void {
 
-        const negociacao = this.convertsorTiposNegociacao;
-        console.log(negociacao);
-        this.limparformulario();
+        const negociacao = this.conversorTiposNegociacao();
+        this.negociacoes.adiciona(negociacao);
+        console.log(this.negociacoes);
+        this.limparformulario();    
 
 
     }
 
-    convertsorTiposNegociacao(): Negociacao {
+    conversorTiposNegociacao(): Negociacao {
         const exp = /-/g;
         const date = new Date(this.inputData.value.replace(exp, ','));
         //O input.value do html vai devolver uma data no formato 1111-11-11
