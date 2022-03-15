@@ -1,8 +1,18 @@
 import { Negociacao } from "./Negociacao.js";
 
-export class Negociacoes{
+export class Negociacoes {
 
-    //encapsulando para que nem todo mundo posssa alterar a lista  
     private negociacoes: Array<Negociacao> = [];
+
+
+    adiciona(negociacao: Negociacao): void {
+        this.negociacoes.push(negociacao);
+    }
+
+    lista(): Array<Negociacao>{
+        return this.negociacoes;
+    }
+
+
 
 }
