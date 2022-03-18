@@ -10,10 +10,9 @@ const form = document.querySelector('.form');
 form.addEventListener('submit', event=>{
     
     controller.adicionar();
-
     event.preventDefault();
+
+
 });
-
-
 
 

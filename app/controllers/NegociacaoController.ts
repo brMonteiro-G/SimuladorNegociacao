@@ -16,9 +16,13 @@ export class NegociacaoController {
  
     adicionar(): void {
 
+        
         const negociacao = this.conversorTiposNegociacao();
+        //negociacao.data.setDate(15); não funciona mais com a programação defensiva 
         this.negociacoes.adiciona(negociacao);
-        console.log(this.negociacoes);
+
+        console.log(this.negociacoes.lista());
+
         this.limparformulario();    
 
 
