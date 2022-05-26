@@ -1,13 +1,13 @@
 export class Negociacao {
 
     constructor(
-        public _data: Date,
-        public readonly quantidade: number,
+        private _data: Date,
+        public readonly quantidade: number, 
         public readonly valor: number
     ) {}
 
 
-    get data(): Date{
+    get data(): Date{ //programação defensiva
         const data =new Date(this._data.getTime()) 
         return data
     }

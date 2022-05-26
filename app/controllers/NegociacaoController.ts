@@ -1,5 +1,6 @@
 import { Negociacao } from "../models/Negociacao.js";
 import { Negociacoes } from "../models/Negociacoes.js";
+import { NegociacaoView } from "../views/NegociacaoView.js";
 
 export class NegociacaoController {
 
@@ -7,25 +8,23 @@ export class NegociacaoController {
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes(); 
+    private negociacaoView = new NegociacaoView('#negociacaoView')
 
     constructor() {
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
-    }
+        this.negociacaoView.update(this.negociacoes)
+    }   
  
     adicionar(): void {
-
-        
         const negociacao = this.conversorTiposNegociacao();
         //negociacao.data.setDate(15); não funciona mais com a programação defensiva 
         this.negociacoes.adiciona(negociacao);
-
+        this.negociacaoView.update(this.negociacoes)
         console.log(this.negociacoes.lista());
 
-        this.limparformulario();    
-
-
+        this.limparformulario();     
     }
 
     conversorTiposNegociacao(): Negociacao {
@@ -37,7 +36,6 @@ export class NegociacaoController {
         const valor = parseFloat(this.inputValor.value);
 
         return new Negociacao(date, quantidade, valor);
-
 
     }
 
@@ -53,6 +51,10 @@ export class NegociacaoController {
     }
 
 
-
-
+    // exibeFormulario():void{
+        
+    //     const view = new NegociacaoView()
+    //     const div = document.querySelector('#negociacaoView')
+    //     div.innerHTML = view.template()
+    //   }
 }
