@@ -8,9 +8,9 @@ export abstract class View<T>{
     }
 
 
-    abstract template(parametro: T): string
+    protected abstract template(parametro: T): string
 
-    update(parametro: T):void{
+     update(parametro: T):void{
         const model = this.template(parametro)
         this.elemento.innerHTML = model
     }
