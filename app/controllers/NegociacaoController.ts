@@ -55,10 +55,5 @@ export class NegociacaoController {
     }
 
 
-    // exibeFormulario():void{
-        
-    //     const view = new NegociacaoView()
-    //     const div = document.querySelector('#negociacaoView')
-    //     div.innerHTML = view.template()
-    //   }
+  
 }
