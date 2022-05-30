@@ -1,5 +1,6 @@
 import { Negociacao } from "../models/Negociacao.js";
 import { Negociacoes } from "../models/Negociacoes.js";
+import { MensagemView } from "../views/MenssagemView.js";
 import { NegociacaoView } from "../views/NegociacaoView.js";
 
 export class NegociacaoController {
@@ -9,12 +10,14 @@ export class NegociacaoController {
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes(); 
     private negociacaoView = new NegociacaoView('#negociacaoView')
+    private mensagemView = new MensagemView('#mensagemView')
 
     constructor() {
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
         this.negociacaoView.update(this.negociacoes)
+
     }   
  
     adicionar(): void {
@@ -22,6 +25,7 @@ export class NegociacaoController {
         //negociacao.data.setDate(15); não funciona mais com a programação defensiva 
         this.negociacoes.adiciona(negociacao);
         this.negociacaoView.update(this.negociacoes)
+        this.mensagemView.update("Negociação adicionada com sucesso")
         console.log(this.negociacoes.lista());
 
         this.limparformulario();     

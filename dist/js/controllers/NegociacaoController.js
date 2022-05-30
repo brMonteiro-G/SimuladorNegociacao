@@ -1,10 +1,12 @@
 import { Negociacao } from "../models/Negociacao.js";
 import { Negociacoes } from "../models/Negociacoes.js";
+import { MensagemView } from "../views/MenssagemView.js";
 import { NegociacaoView } from "../views/NegociacaoView.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
         this.negociacaoView = new NegociacaoView('#negociacaoView');
+        this.mensagemView = new MensagemView('#mensagemView');
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
@@ -15,6 +17,7 @@ export class NegociacaoController {
         //negociacao.data.setDate(15); não funciona mais com a programação defensiva 
         this.negociacoes.adiciona(negociacao);
         this.negociacaoView.update(this.negociacoes);
+        this.mensagemView.update("Negociação adicionada com sucesso");
         console.log(this.negociacoes.lista());
         this.limparformulario();
     }
